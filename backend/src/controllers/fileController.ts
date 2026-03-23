@@ -14,6 +14,7 @@ class FileController {
       const response = await this.uploadFileUseCase.execute({
         fileName: req.headers.fileName as string,
         userId: Number(req.headers.user),
+        folder: req.body.folder as string | undefined,
       });
 
       res.status(200).send({ file: response });

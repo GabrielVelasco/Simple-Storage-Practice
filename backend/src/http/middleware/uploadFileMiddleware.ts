@@ -5,7 +5,12 @@ class UploadFileMiddleware {
   public execute() {
     const storage = this.createStorage();
 
-    const upload = multer({ storage: storage });
+    const upload = multer({
+      storage: storage,
+      limits: {
+        fileSize: 5 * 1024 * 1024, // 5MB limit
+      },
+    });
 
     return upload.single("file");
   }
